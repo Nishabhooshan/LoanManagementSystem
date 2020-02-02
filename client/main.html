@@ -1,0 +1,32 @@
+<head> 
+
+  <title>Register_Email</title>
+</head>
+
+<body>
+  <h1>Welcome to Landers App!</h1>
+
+</body>
+
+
+<template name="all_links">
+  <a href="register.html">Register Here</a>
+</template>
+
+<template name="register">
+    <h2>Register</h2>
+    <form class="register">
+        <p>Email: <input type="email" name="email"></p>
+		<p> 
+			<select name="user_type">
+			  <option value="lender">Lender</option>
+			  <option value="borrower">Borrower</option>
+			</select>
+		</p>
+        <button id="submitbutton" class="btn btn-primary">Register</button>
+
+    </form>
+    <a href="/">Back to main</a>
+</template>
+
+
