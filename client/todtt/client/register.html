@@ -1,0 +1,26 @@
+
+
+<head> 
+  <title>Register Email</title>
+</head>
+
+<body>
+  <h1>Register</h1>
+  {{>register}}
+</body>
+  
+ 
+ 
+<template name="register">
+    <h2>Register</h2>
+    <form class="register">
+        <p>Email: <input type="email" name="email"></p>
+		<p> 
+			<select name="user_type">
+			  <option value="lender">Lender</option>
+			  <option value="borrower">Borrower</option>
+			</select>
+		</p>
+        <p><input type="submit" value="Register"></p>
+    </form>
+</template>

@@ -1,0 +1,136 @@
+<head>
+  <title>Register_Email</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <style >
+    body {background-color: powderblue;
+       background-image: url("backimg.jpg");
+     }
+
+    h1{
+      font-family: 'Roboto';
+      font-size: 50px;
+      text-decoration: underline;
+      border-style: dotted;
+      background-color: #f1f1f1;
+      padding: 20px;
+      text-align: center;
+      color:purple;
+
+    }
+    h2{
+      color: black;
+      text-shadow: 3px 2px grey;
+    }
+    
+    .topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+    h3{background-color: #ddd;
+       outline: none;
+      padding-top: 50px;
+      padding-right: 30px;
+      padding-bottom: 50px;
+     padding-left: 80px;}
+  </style>
+</head>
+<body>
+ <h1> Welcome to Landers App!</h1>
+</body>
+
+<template name="all_links">
+  <h2>
+    <div class="topnav">
+  <a href="register.html">Register Here</a>
+</div>
+</h2>
+</template>
+
+
+
+<template name="register">
+    <h2>Register</h2>
+
+    
+    <form class="login">
+        <p>Email: <input type="email" name="email"></p>
+		<p> 
+			<select name="user_type">
+			  <option value="lender">Lender</option>
+			  <option value="borrower">Borrower</option>
+			</select>
+		</p>
+        <button id="submitbutton" class="btn btn-primary">Register</button>
+
+    </form>
+	<a href="/">Back to main</a>
+</template>
+  
+
+ <template name="login">
+   <h3>
+    <form>
+         <p>Email: <input type="email" name="email"></p>
+          <p>Password: <input type="Password" name="P"></p>
+        <input type="submit" value="Login">
+    </form>
+  </h3>
+</template>
+
+
+ 
+<template name="dashboard">
+  <h4>
+    
+        <p>Dashboard</p>
+        <p><a href="#" class="dashboard_style">Logout</a></p>
+    </h4>
+
+</template>
+
+<template name="ForgotPassword">
+<h5>
+ 
+  
+    <form action="/forgot" id="forgotPasswordForm" method="post">
+      <input id="forgotPasswordEmail" type="text" name="email" placeholder="Email Address">
+      <input class="btn-submit" type="submit" value="Send">
+    </form>
+  </h5>
+   
+</template>
+
+
+<template name="ResetPassword">
+  <h5>
+    <form action="/reset-password"  id="resetPasswordForm" method="post">
+        <input id="resetPasswordPassword" name="password" placeholder="New Password" type="password" >
+        <input id="resetPasswordPasswordConfirm" name="password-confirm" placeholder="Confirm" type="password" >
+        <input class="btn-submit" type="submit" value="Reset">
+    </form>
+  </h5>
+</template>    
+
+
+<template name="LanderHomePage">
+  <h6>
+    <form>
+      <p>Lander Home Page</p>
+         <p>Email:</p>
+          <p>loan amount:</p>
+    </form>
+  </h6>
+</template>
+ 
+<template name="BorrowerHomePage">
+  <h6>
+    <form>
+      <p>Borrower Home Page</p>
+         <p>Email:</p>
+          <p>loan amount:</p>
+    </form>
+    </h6>
+</template>
+
+
+
