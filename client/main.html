@@ -4,7 +4,7 @@
   <style >
     body {
       
-       background-image: url("bg_image.jpg");
+      
      }
 
     h1{
@@ -87,11 +87,18 @@ h6{font-size:30px;
         <td align="left"> 
              <h2>
                 <div class="topnav">
-                    <a href="login.html">Login</a>
+                    <a href="login.html">Borrower Login</a>
                 </div>
             </h2>       	
         </td>
         
+         <td align="left"> 
+             <h2>
+                <div class="topnav">
+                    <a href="login_lander.html">Lander Login</a>
+                </div>
+            </h2>         
+        </td>
       </tr>
     </table>
 </template>
@@ -132,8 +139,8 @@ h6{font-size:30px;
 <th>Lander/Borrower:</th>
 <td>
 
+<td><input type="text" name="lander_borrower"/></td>
 
-<input type="radio" name="lander" value="0"> Lander
 
 
 </td>
@@ -142,7 +149,7 @@ h6{font-size:30px;
 <tr>
 <td colspan="2" align="center">
   <!--input id="submitbutton" type="submit" value="Register"/ -->
-  <button id="submitbutton" class="btn btn-primary" onclick="location.href = '/registered.html';">Register</button>
+  <button id="registerbutton" class="btn btn-primary" onclick="location.href = '/registered.html';">Register</button>
 
 
 </td>
@@ -165,7 +172,7 @@ h6{font-size:30px;
           {
             
               Meteor.call('find_type', email, function(err, result) {
-                  alert(result);
+                  //alert(result);
               });
 
               //var result = Meteor.apply('find_type', [email],       { returnStubValue: true });
@@ -183,7 +190,7 @@ h6{font-size:30px;
           </p>
 
         
-        <button id="submitbutton1" class="btn btn-primary" onclick="getUserType('ni@sha.com')">Login</button>
+        <button id="loginbutton" class="btn btn-primary">Login</button>
 
 
         <!-- button id="loginbutton" class="btn btn-primary" onclick="location.href = '/';">Login</button-->
@@ -264,14 +271,112 @@ h6{font-size:30px;
   <h6>
 
     <form>
+      <form action="/BorrowerHomePage.html">
 
       <p>Borrower Home Page</p>
-         <p>Email:</p>
-          <p>loan amount:</p>
+           <p>Email: <input type="email" name="email"></p>
+          <p>loan amount: <input type="text" name="loanmoney"></p>
+          <button id="borrowerprocessbutton" class="btn btn-primary" onclick="location.href = '/';">Process</button>
     </form>
     <a href="/">Backs to main</a>
+  </form>
     </h6>
+
 </template>
 
 
 
+
+<template name="loanamount">
+   <h3>
+    <h2>Loan request process</h2>
+    <form>
+        <script type="text/javascript">
+          //var result
+
+          function getUserType(email)
+          {
+            
+              Meteor.call('find_type', email, function(err, result) {
+                  //alert(result);
+              
+
+              //var result = Meteor.apply('find_type', [email],       { returnStubValue: true });
+
+              alert(result);
+          }
+        </script>
+         <p>Email: <input type="email" name="email"></p>
+          <p>loan amount: <input type="text" name="loanmoney"></p>
+          
+        
+        <!--<button id="submitbutton1" name="process_button" class="btn btn-primary" onclick="getUserType('ni@sha.com')">Process</button-->
+
+<button id="processlanderbutton" class="btn btn-primary" onclick="location.href = '/';">Process</button>
+
+        <!-- button id="loginbutton" class="btn btn-primary" onclick="location.href = '/';">Login</button-->
+
+    </form>
+  </h3>
+  
+  </template>
+
+
+ <template name="login_lander">
+   <h3>
+    <h2>Login</h2>
+    <form action="/loanamount.html">
+        <script type="text/javascript">
+          //var result
+
+          function getUserType(email)
+          {
+            
+              Meteor.call('find_type', email, function(err, result) {
+                  //alert(result);
+              });
+
+              //var result = Meteor.apply('find_type', [email],       { returnStubValue: true });
+
+              alert(result);
+          }
+        </script>>
+         <p>Email: <input type="email" name="email"></p>
+          <p>Password: <input type="Password" name="P"></p>
+          <p> 
+            <select name="user_type">
+              <option value="lender">Lender</option>
+              <option value="borrower">Borrower</option>
+            </select>
+          </p>
+
+        
+        <button id="login_landerbutton" class="btn btn-primary">Login</button>
+
+
+        <!-- button id="loginbutton" class="btn btn-primary" onclick="location.href = '/';">Login</button-->
+
+    </form>
+
+      <table style="width:40%" align="left"> 
+      <tr>
+        <td align="left">
+
+            <a href="/">Back To Main</a>
+        </td>
+        <td align="left"> 
+              <a href="/ForgotPassword.html">Forgot Password</a>     
+        </td>
+        
+        <td align="left"> 
+              <a href="/ResetPassword.html">Reset Password</a>     
+        </td>
+
+      </tr>
+    </table>
+
+
+
+    
+  </h3>
+</template>

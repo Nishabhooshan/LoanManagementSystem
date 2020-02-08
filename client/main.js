@@ -51,14 +51,24 @@ Router.route('/LanderHomePage.html', function () {
 Router.route('/BorrowerHomePage.html', function () {
   this.render('BorrowerHomePage');
 });
+ 
+Router.route('/loanamount.html', function () {
+  this.render('loanamount');
+});
+
+Router.route('/login_lander.html', function () {
+  this.render('login_lander');
+});
+
+
 
 //import './imports/api/tasks.js'
 Template.register.events({
-  'click #submitbutton' : function (e) {
+  'click #registerbutton' : function (e) {
      e.preventDefault();
      var name = $('input[name="name"]').val();
      var email = $('input[name="email"]').val();
-     var lander = $('input[name=lander]:checked').val();
+     var lander = $('input[name="lander_borrower"]').val();
 
      var lander_type = ""
      if (lander == null) {
@@ -73,6 +83,84 @@ Template.register.events({
         
     });
 
-     }
+     /*
+
+     Meteor.call('cl_this', name, email, lander_type, function() {
+        
+    });*/
+
+   } });
+/*
+   Template.loanamount.events({
+  'click #loginbutton' : function (e) {
+     e.preventDefault();
+     alert("called this");
+        var loanamount = $('input[name="loanmoney"]').val();
+     var email = $('input[name="email"]').val();
+     
+
+     Meteor.call('process_borrower',  email, loanamount, function() {
+        
+    });
+
+     
+
+     Meteor.call('cl_this', name, email, lander_type, function() {
+        
+    });
+   }
+
+
+
+}); 
+*/
+
+//function for lander
+Template.loanamount.events({
+  'click #processlanderbutton' : function (e) {
+     e.preventDefault();
+     alert("called processlander");
+        var loanamount = $('input[name="loanmoney"]').val();
+     var email = $('input[name="email"]').val();
+     
+
+     Meteor.call('process_lander',  email, loanamount, function() {
+        
+    });
+
+     /*
+
+     Meteor.call('cl_this', name, email, lander_type, function() {
+        
+    });*/
+   }
+
+
+
 });
+
+
+
+Template.BorrowerHomePage.events({
+  'click #borrowerprocessbutton' : function (e) {
+     e.preventDefault();
+        var loanamount = $('input[name="loanmoney"]').val();
+     var email = $('input[name="email"]').val();
+     
+
+     Meteor.call('process_borrower',  email, loanamount, function() {
+        
+    });
+
+     /*
+
+     Meteor.call('cl_this', name, email, lander_type, function() {
+        
+    });*/
+   }
+
+
+
+});
+
 
