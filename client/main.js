@@ -51,7 +51,7 @@ Router.route('/LanderHomePage.html', function () {
 Router.route('/BorrowerHomePage.html', function () {
   this.render('BorrowerHomePage');
 });
- 
+
 Router.route('/loanamount.html', function () {
   this.render('loanamount');
 });
@@ -60,107 +60,114 @@ Router.route('/login_lander.html', function () {
   this.render('login_lander');
 });
 
+Router.route('/error_login.html', function () {
+  this.render('error_login');
+});
+
 
 
 //import './imports/api/tasks.js'
 Template.register.events({
   'click #registerbutton' : function (e) {
-     e.preventDefault();
-     var name = $('input[name="name"]').val();
-     var email = $('input[name="email"]').val();
-     var lander = $('input[name="lander_borrower"]').val();
+   e.preventDefault();
+   var name = $('input[name="name"]').val();
+   var email = $('input[name="email"]').val();
+   var lander = $('input[name="lander_borrower"]').val();
 
-     var lander_type = ""
-     if (lander == null) {
-        lander_type = "borrower"
-     }
-     else
-     {
-        lander_type = "Lander"
-     }
+   var lander_type = ""
+   if (lander == null) {
+    lander_type = "borrower"
+  }
+  else
+  {
+    lander_type = "Lander"
+  }
 
-     Meteor.call('cl_this', name, email, lander_type, function() {
-        
-    });
+  Meteor.call('cl_this', name, email, lander_type, function() {
 
-     /*
+  });
 
-     Meteor.call('cl_this', name, email, lander_type, function() {
-        
-    });*/
 
    } });
-/*
-   Template.loanamount.events({
-  'click #loginbutton' : function (e) {
-     e.preventDefault();
-     alert("called this");
-        var loanamount = $('input[name="loanmoney"]').val();
-     var email = $('input[name="email"]').val();
-     
 
-     Meteor.call('process_borrower',  email, loanamount, function() {
-        
-    });
-
-     
-
-     Meteor.call('cl_this', name, email, lander_type, function() {
-        
-    });
-   }
-
-
-
-}); 
-*/
 
 //function for lander
 Template.loanamount.events({
   'click #processlanderbutton' : function (e) {
-     e.preventDefault();
-     alert("called processlander");
-        var loanamount = $('input[name="loanmoney"]').val();
-     var email = $('input[name="email"]').val();
-     
+   e.preventDefault();
+   alert("called processlander");
+   var loanamount = $('input[name="loanmoney"]').val();
+   var email = $('input[name="email"]').val();
 
-     Meteor.call('process_lander',  email, loanamount, function() {
-        
-    });
 
-     /*
+   Meteor.call('process_lander',  email, loanamount, function() {
 
-     Meteor.call('cl_this', name, email, lander_type, function() {
-        
-    });*/
+   });
+
+    
    }
 
 
 
-});
+ });
 
 
 
 Template.BorrowerHomePage.events({
   'click #borrowerprocessbutton' : function (e) {
-     e.preventDefault();
-        var loanamount = $('input[name="loanmoney"]').val();
-     var email = $('input[name="email"]').val();
+   e.preventDefault();
+   var loanamount = $('input[name="loanmoney"]').val();
+   var email = $('input[name="email"]').val();
+
+
+   Meteor.call('process_borrower',  email, loanamount, function() {
+
+   });
+
      
-
-     Meteor.call('process_borrower',  email, loanamount, function() {
-        
-    });
-
-     /*
-
-     Meteor.call('cl_this', name, email, lander_type, function() {
-        
-    });*/
    }
 
 
 
-});
+ });
+
+/*Template.login.events({
+  'click #loginbutton' : function (e) {
+   e.preventDefault();
+    
+    alert("calledlogin");
+   var email = $('input[name="email"]').val();
+
+
+  Meteor.call('find_type',  email, function() {
+
+   });
+
+     
+   }
+
+
+
+ });*/
+
+
+
+   Template.login.events({
+  'click #loginbutton' : function (e) {
+     e.preventDefault();
+     alert("called this");
+     var email = $('input[name="email"]').val();
+     
+     
+     Meteor.call('find_type', email,  function() {
+        
+    });
+  
+// Simulate an HTTP redirect:
+window.location.replace("/BorrowerHomePage.html");
+ }
+}); 
+
+
 
 
